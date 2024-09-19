@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <style>
+    body {
+  background-color: #000;
+  font-family: Avenir, sans-serif;
+  color: #fffce1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+p {
+  max-width: 70ch;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+#end {
+  display: none;
+}
+
+  </style>
+  <body>
+    <svg id="hourglass" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"></svg>
+  <path fill="none" stroke="currentColor" stroke-width="2" d="M8.99 3.03 9 9l14 14v6H9v-6L23 9V3l-14.01.03Z" />
+  <path id="start" fill="currentColor" d="M23 3v6l-7 7-7-7V3h14Z" />
+  <path id="end" fill="currentColor" d="M22.99 29v-5.72l-7-6.67-7 6.67V29h14Z" />
+</svg>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/CSSRulePlugin.min.js"></script>
+    <script>
+     gsap
+  .timeline({
+    repeat: -1,
+    ease: "power2.linear"
+  })
+  .to("#start", { morphSVG: "#end", duration: 0.3 })
+  .to("#hourglass", { rotate: "180deg", duration: 0.5 });
+    </script>
+  </body>
+</html>
